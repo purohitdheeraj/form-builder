@@ -6,4 +6,5 @@ export const icons = {
   DateIcon: '/date.svg',
   BangIcon: '/bang.svg',
   DraftIcon: '/draft.svg',
+  GripVerticalIcon: '/grip-vertical.svg',
 };

@@ -3,15 +3,8 @@ import { Button } from '@/components/ui/button';
 
 import Dropdown from '@/components/custom-dropdown';
 
-import { icons } from '@/assets/icons';
+import Question from '@/components/question';
 
-const inputTypes = [
-  { icon: icons.ShortAnswerIcon, label: 'Short Answer' },
-  { icon: icons.LongAnswerIcon, label: 'Long Answer' },
-  { icon: icons.SingleSelectIcon, label: 'Single Select' },
-  { icon: icons.UrlIcon, label: 'URL' },
-  { icon: icons.DateIcon, label: 'Date' },
-];
 
 const CreateJob = () => {
   return (
@@ -31,7 +24,7 @@ const CreateJob = () => {
         <br />
         <br />
 
-        <Dropdown inputTypes={inputTypes} />
+        <Question/>
       </div>
     </>
   );
