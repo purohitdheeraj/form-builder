@@ -14,6 +14,8 @@ export default {
 				foreground: 'hsl(var(--foreground))',
 				gray: {
 					'00': 'hsl(var(--gray-00))',
+					'50': 'hsl(var(--gray-50))',
+					'100': 'hsl(var(--gray-100))',
 					'200': 'hsl(var(--gray-200))',
 					'400': 'hsl(var(--gray-400))',
 					'1k': 'hsl(var(--text-gray-1k))',
