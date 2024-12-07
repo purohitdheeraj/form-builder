@@ -13,8 +13,6 @@ const inputTypes = [
   { icon: icons.DateIcon, label: 'Date' },
 ];
 
-
-
 const CreateJob = () => {
   return (
     <>
