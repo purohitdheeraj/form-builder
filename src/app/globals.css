@@ -33,7 +33,7 @@ body {
     --destructive-foreground: 0 79% 63%; /* destructive text */
     --border: 214 13% 90%; /* border prominent */
     --input: 0 0% 89.8%;
-    --radius: 0.5rem;
+    --radius: 12px;
     
     /* gray */
     --gray-00: 0 0% 100%;

@@ -12,7 +12,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="light">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com"/>
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous"/>
@@ -21,7 +21,9 @@ export default function RootLayout({
       <body
         className={`antialiased`}
       >
+        <div className="mx-auto max-w-[620px] min-h-svh bg-background h-full">
         {children}
+        </div>
       </body>
     </html>
   );
