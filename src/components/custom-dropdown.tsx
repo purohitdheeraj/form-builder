@@ -6,7 +6,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-import Icon from "./icon";
+import Icon, { IconName } from "./icon";
 import { ChevronDown, Plus } from "lucide-react";
 import { useEffect, useState } from "react";
 
@@ -38,7 +38,7 @@ const Dropdown = ({ inputTypes,setQuestionType, triggerType = 'icon', currentTyp
       <DropdownMenuTrigger className="flex items-center gap-1 text-gray-400 outline-none">
         {triggerType === 'icon' ? (<>
           <Icon
-          name={selectedItem?.name || "shortAnswer"} // Default icon if no item is selected
+          name={selectedItem?.name as IconName || "shortAnswer"} // Default icon if no item is selected
           fill={selectedItem?.fill !== undefined ? selectedItem.fill : false}
           width={20}
           height={20}
@@ -66,7 +66,7 @@ const Dropdown = ({ inputTypes,setQuestionType, triggerType = 'icon', currentTyp
             key={index}
             onClick={() => handleSelect(item)}
           >
-            <Icon name={item.name} fill={item.fill} width={20} height={20} />
+            <Icon name={item.name as IconName} fill={item.fill} width={20} height={20} />
             {item.label}
           </DropdownMenuItem>
         ))}

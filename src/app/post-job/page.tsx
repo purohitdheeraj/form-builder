@@ -245,7 +245,7 @@ You have successfully applied for the {jobTitle} position. All the best!
               inputTypes={inputTypes}
               triggerType="button"
               setQuestionType={(selectedType) =>
-                addQuestion(selectedType)
+                addQuestion(selectedType as InputType)
               } // Add question on selection
             />
           </div>
