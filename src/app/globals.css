@@ -5,6 +5,11 @@
 body {
   font-family: "Inter", sans-serif;
 }
+html, body {
+  height: 100%;
+  overflow-y: auto;
+}
+
 
 .inter-regular {
   font-family: "Inter", sans-serif;

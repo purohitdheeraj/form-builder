@@ -34,6 +34,7 @@ const inputTypes: InputType[] = [
 const CreateJob = () => {
   const [questions, setQuestions] = useState<QuestionType[]>([]);
   const [jobTitle, setJobTitle] = useState<string>("");
+  const [showPreview, setShowPreview] = useState<boolean>(false);
 
   // Function to add a new question
   const addQuestion = (questionType: InputType) => {
@@ -59,75 +60,93 @@ const CreateJob = () => {
     console.log("Questions updated:", questions);
   }, [questions]);
 
-  return (
-    <>
-    <header className="py-3 px-6 flex items-center justify-between border border-t-transparent">
-    
-
-<input
-            type="text"
-            placeholder="Untitled form"
-            value={jobTitle}
-            onChange={(e) => setJobTitle(e.target.value)}
-            className={`font-semibold ${
-              jobTitle ? "text-gray-1k" : "text-gray-400"
-            } bg-transparent border-none outline-none w-full`}
-          />
-      
-      <Button size={"sm"}  variant={'outline'} className="shadow-xl font-semibold"  disabled={questions.length <=0 } >
-      <span>
-          Preview
-      </span>
-      <ArrowUpRight size={16} />
-      </Button>
-    </header>
-      
-      <main className="space-y-4 flex flex-col  border border-y-transparent h-full">
-      {/* Dropdown for adding a question */}
-    
-
-      {/* Render all questions */}
-      <div className="space-y-4 my-6 flex justify-center flex-col items-center">
-        {questions.map((question) => (
-          <Question
-          key={question.id}
-            questionId={question.id}
-            questionType={question.type}
-            title={question.title}
-            subtitle={question.subtitle}
-            updateQuestion={updateQuestion} // Pass update function
-          />
-        ))}
-      </div>
-
-      <div className="flex justify-center">
-
-      <Dropdown
-        inputTypes={inputTypes}
-        triggerType="button"
-        setQuestionType={(selectedType) => addQuestion(selectedType)} // Add question on selection
-        />
-        </div>
-
-      </main>
-
-    <footer className="py-3 mt-auto border-gray-200 px-6 bg-secondary/90 backdrop-blur-sm flex items-center justify-between  border border-b-transparent">
-        <Button size={'sm'} variant={'outline'} className="flex font-semibold  items-center gap-1">
-          <span className="shrink-0 mt-1">
-          <Icon name="draft" fill={false} width={16} height={16}/>
-          </span>
-          <span>
-
-          Save as Draft
-          </span>
-          </Button>
-
-          <Button size={"sm"}>
-            Publish form
-          </Button>
-    </footer>
+  if(showPreview){
+    return <>
+       <header className="flex justify-between items-center mb-6">
+          <h1 className="text-lg font-semibold">{jobTitle || "Submit form"}</h1>
+          <div className="flex items-center gap-2 text-sm">
+            <span>Form completeness — 80%</span>
+            <div className="h-2 w-20 bg-gray-200 rounded">
+              <div className="h-2 w-[80%] bg-green-500 rounded"></div>
+            </div>
+          </div>
+        </header>
     </>
-  );
+  }else{
+    return (
+      <div className="flex flex-col justify-between border-x ">
+      <header className="py-3 px-6 flex items-center justify-between border-b sticky top-0 z-10 backdrop-blur-sm ">
+      
+  
+  <input
+              type="text"
+              placeholder="Untitled form"
+              value={jobTitle}
+              onChange={(e) => setJobTitle(e.target.value)}
+              className={`font-semibold ${
+                jobTitle ? "text-gray-1k" : "text-gray-400"
+              } bg-transparent border-none outline-none w-full`}
+            />
+        
+        <Button size={"sm"}  variant={'outline'} className="shadow-xl font-semibold"  disabled={questions.length <=0 } >
+        <span>
+            Preview
+        </span>
+        <ArrowUpRight size={16} />
+        </Button>
+      </header>
+        
+        <main className="space-y-4 flex flex-col  min-h-screen no-scrollbar ">
+        {/* Dropdown for adding a question */}
+      
+            
+        <div className="space-y-4 my-6 flex justify-center flex-col items-center">
+          {questions.map((question) => (
+            <Question
+            key={question.id}
+              questionId={question.id}
+              questionType={question.type}
+              title={question.title}
+              subtitle={question.subtitle}
+              updateQuestion={updateQuestion} // Pass update function
+            />
+          ))}
+        </div>
+  
+        <div className="flex justify-center pb-6">
+  
+        <Dropdown
+          inputTypes={inputTypes}
+          triggerType="button"
+          setQuestionType={(selectedType) => addQuestion(selectedType)} // Add question on selection
+          />
+          </div>
+        
+  
+        </main>
+  
+      <footer className="py-3  border-gray-200 px-6 bg-secondary/90 backdrop-blur-sm flex items-center justify-between  border-t ">
+          <Button disabled={questions.length <= 0} size={'sm'} variant={'outline'} className="flex font-semibold  items-center gap-1">
+            <span className="shrink-0 mt-1">
+            <Icon name="draft" fill={false} width={16} height={16}/>
+            </span>
+            <span>
+  
+            Save as Draft
+            </span>
+            </Button>
+  
+            <Button onClick={()=>{
+              setShowPreview(true);
+            }} size={"sm"} disabled={questions.length <= 0}>
+              Publish form
+            </Button>
+      </footer>
+      </div>
+    );
+  }
+
+  
 };
 
 export default CreateJob;

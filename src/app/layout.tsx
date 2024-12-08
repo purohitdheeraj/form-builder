@@ -19,9 +19,9 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet"/>
       </head>
       <body
-        className={`antialiased`}
+        className={`antialiased overflow-auto min-h-screen h-full `}
       >
-        <div className="mx-auto max-w-[620px] min-h-svh bg-background h-full">
+        <div className="mx-auto  flex flex-col max-w-[620px]  h-[100%] bg-background">
         {children}
         </div>
       </body>

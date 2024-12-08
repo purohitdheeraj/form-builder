@@ -8,7 +8,7 @@ import {
 
 import Icon from "./icon";
 import { ChevronDown, Plus } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "./ui/button";
 
 type InputType = {
@@ -23,14 +23,15 @@ interface DropdownProps {
   triggerType: 'icon' | 'button';
 }
 
-const Dropdown = ({ inputTypes, setQuestionType, triggerType = 'icon' }: DropdownProps) => {
+const Dropdown = ({ inputTypes,setQuestionType, triggerType = 'icon' }: DropdownProps) => {
   // State to track the selected item
   const [selectedItem, setSelectedItem] = useState<InputType | null>(null);
 
   const handleSelect = (item: InputType) => {
-    setSelectedItem(item); // Update the selected item
-    setQuestionType(item); // Update the selected item
+    setSelectedItem(()=>item); 
+    setQuestionType(item); 
   };
+
 
   return (
     <DropdownMenu modal={false}>
