@@ -21,11 +21,12 @@ interface DropdownProps {
   inputTypes: InputType[];
   setQuestionType: (item: InputType) => void;
   triggerType: 'icon' | 'button';
+  currentType?: InputType;
 }
 
-const Dropdown = ({ inputTypes,setQuestionType, triggerType = 'icon' }: DropdownProps) => {
+const Dropdown = ({ inputTypes,setQuestionType, triggerType = 'icon', currentType }: DropdownProps) => {
   // State to track the selected item
-  const [selectedItem, setSelectedItem] = useState<InputType | null>(null);
+  const [selectedItem, setSelectedItem] = useState<InputType | null>(currentType || inputTypes[0]);
 
   const handleSelect = (item: InputType) => {
     setSelectedItem(()=>item); 

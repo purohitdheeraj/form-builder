@@ -5,7 +5,7 @@ import Icon from "@/components/icon";
 import Question from "@/components/question";
 import { Button } from "@/components/ui/button";
 import { ArrowUpRight } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 // Define the type for input types
 type InputType = {
@@ -35,6 +35,13 @@ const CreateJob = () => {
   const [questions, setQuestions] = useState<QuestionType[]>([]);
   const [jobTitle, setJobTitle] = useState<string>("");
   const [showPreview, setShowPreview] = useState<boolean>(false);
+  const jobTitleRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (jobTitleRef.current) {
+      jobTitleRef.current.focus(); // Focus the input when the component loads
+    }
+  }, []);
 
   // Function to add a new question
   const addQuestion = (questionType: InputType) => {
@@ -76,12 +83,12 @@ const CreateJob = () => {
     return (
       <div className="flex flex-col justify-between border-x ">
       <header className="py-3 px-6 flex items-center justify-between border-b sticky top-0 z-10 backdrop-blur-sm ">
-      
-  
-  <input
+    
+            <input
               type="text"
               placeholder="Untitled form"
               value={jobTitle}
+              ref={jobTitleRef}
               onChange={(e) => setJobTitle(e.target.value)}
               className={`font-semibold ${
                 jobTitle ? "text-gray-1k" : "text-gray-400"
@@ -96,7 +103,7 @@ const CreateJob = () => {
         </Button>
       </header>
         
-        <main className="space-y-4 flex flex-col  min-h-screen no-scrollbar ">
+        <main className="space-y-4 flex flex-col  min-h-screen  ">
         {/* Dropdown for adding a question */}
       
             

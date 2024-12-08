@@ -76,6 +76,7 @@ const Question = ({
         <div className="flex items-center gap-2 text-gray-1k">
           {/* Dropdown for question type */}
           <Dropdown
+            currentType={inputTypes.find((item) => item.name === localType)}
             triggerType="icon"
             inputTypes={inputTypes}
             setQuestionType={(item) => setLocalType(item.name)}
@@ -110,7 +111,7 @@ const Question = ({
                       handleOptionChange(index, e.target.value)
                     }
                     placeholder={`Option ${index + 1}`}
-                    className="text-gray-400 placeholder:text-gray-400"
+                    className="text-gray-1k placeholder:text-gray-400"
                   />
                   {index === options.length - 1 && (
                     <Button
