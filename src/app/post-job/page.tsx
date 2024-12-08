@@ -47,9 +47,7 @@ const CreateJob = () => {
     }
   }, []);
 
-  useEffect(()=>{
-    console.log(questions)
-  },[questions])
+  
 
   type AnswerData = {
     id: number;
@@ -95,11 +93,6 @@ const validateAnswers = () => {
 };
 
 
-  useEffect(() => {
-    console.log("Answers updated:", answers);
-  }, [answers]);
-
-  // Function to add a new question
   const addQuestion = (questionType: InputType) => {
     const newQuestion: QuestionType = {
       id: Date.now(),
