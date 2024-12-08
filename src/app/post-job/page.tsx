@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Title } from "@/components/ui/title";
 import { ArrowUpRight } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 
 // Define the type for input types
 type InputType = {
@@ -22,6 +22,7 @@ type QuestionType = {
   type: string;
   title: string;
   subtitle: string;
+  options?: string[] | undefined;
 };
 
 const inputTypes: InputType[] = [
@@ -46,6 +47,10 @@ const CreateJob = () => {
     }
   }, []);
 
+  useEffect(()=>{
+    console.log(questions)
+  },[questions])
+
   type AnswerData = {
     id: number;
     title: string;
@@ -53,6 +58,20 @@ const CreateJob = () => {
     subtitle: string;
     value: string;
   };
+
+  const validateQuestions = () => {
+    for (const question of questions) {
+      if (!question.title.trim()) return false; // Title is required
+      if (
+        question.type === "singleSelect" &&
+        (!question.options || question.options.some((opt) => !opt.trim()))
+      ) {
+        return false; // Options must not be empty
+      }
+    }
+    return true;
+  };
+
 
   // Handle answer change by updating the answers state
   const handleAnswerChange = (answer: AnswerData) => {
@@ -63,6 +82,18 @@ const CreateJob = () => {
       };
     });
   };
+
+  // Validation for answers
+const validateAnswers = () => {
+  for (const question of questions) {
+    const answer = answers[question.id];
+    if (!answer || !answer.value.trim()) {
+      return false; // Answer is required and cannot be empty
+    }
+  }
+  return true;
+};
+
 
   useEffect(() => {
     console.log("Answers updated:", answers);
@@ -90,9 +121,16 @@ const CreateJob = () => {
 
   // Calculate the completion percentage
   const calculateCompletionPercentage = () => {
-    const answeredQuestions = Object.keys(answers).length; // Number of answered questions
-    const totalQuestions = questions.length; // Total number of questions
-    return (answeredQuestions / totalQuestions) * 100; // Completion percentage
+    const totalQuestions = questions.length;
+  
+    if (totalQuestions === 0) return 0;
+  
+    // Count only the questions with valid (non-empty) answers
+    const answeredQuestions = questions.filter(
+      (question) => answers[question.id] && answers[question.id].value.trim() !== ""
+    ).length;
+  
+    return (answeredQuestions / totalQuestions) * 100;
   };
 
   const completionPercentage = calculateCompletionPercentage();
@@ -101,7 +139,7 @@ const CreateJob = () => {
     return (
       <div className="flex flex-col justify-between border-x ">
         <header className="py-3 px-6 flex items-center justify-between border-b sticky top-0 z-10 backdrop-blur-sm">
-          <h1 className="text-lg font-semibold">{jobTitle || "Preview"}</h1>
+          <Title>{jobTitle || "Preview"}</Title>
           <div className="flex flex-col text-gray-1k text-right gap-2 text-sm">
             <span>Form completeness — {Math.round(completionPercentage)}%</span>
             <div className="h-1 w-[240px] bg-gray-200 rounded">
@@ -113,7 +151,7 @@ const CreateJob = () => {
             </div>
           </div>
         </header>
-        <main className="space-y-4 flex flex-col p-6 min-h-screen">
+        <main className="space-y-4 flex flex-col  min-h-screen">
           <div className="space-y-4 my-6 flex justify-center flex-col items-center">
             {/* Render the questions in a preview mode */}
             {questions.map((question) => (
@@ -124,13 +162,20 @@ const CreateJob = () => {
               />
             ))}
           </div>
+          <div className="flex justify-end px-4">
+
           <Button onClick={()=>{
-            setIsFormSaved(true)
-            setShowPreview(false)
-            toast.success("Applied Successfully. All the best!")
+            if (validateAnswers()) {
+              setIsFormSaved(true);
+              setShowPreview(false);
+              toast.success("Applied Successfully. All the best!");
+            } else {
+              toast.error("Please answer all the questions and ensure no field is empty.");
+            }
           }} className="w-max ml-auto" size={"sm"}>
             Submit
           </Button>
+            </div>
         </main>
       </div>
     );
@@ -158,7 +203,7 @@ You have successfully applied for the {jobTitle} position. All the best!
   } else {
     return (
       <div className="flex flex-col justify-between border-x ">
-        <header className="py-3 px-6 flex items-center justify-between border-b sticky top-0 z-10 backdrop-blur-sm ">
+        <header className="py-3 px-6 flex items-center space-x-2 justify-between border-b sticky top-0 z-10 backdrop-blur-sm ">
           <input
             type="text"
             placeholder="Untitled form"
@@ -173,7 +218,11 @@ You have successfully applied for the {jobTitle} position. All the best!
           <Button
             size={"sm"}
             onClick={() => {
-              setShowPreview(true);
+              if (validateQuestions()) {
+                setShowPreview(true);
+              } else {
+                toast.error("Please ensure all questions have titles and options (if applicable).");
+              }
             }}
             variant={"outline"}
             className="shadow-xl font-semibold"
@@ -224,7 +273,16 @@ You have successfully applied for the {jobTitle} position. All the best!
 
           <Button
             onClick={() => {
-              setShowPreview(true);
+              if(jobTitle.trim() === ""){
+                toast.error("Please add a title to publish your form");
+                return;
+              }
+              
+              if (validateQuestions()) {
+                setShowPreview(true);
+              } else {
+                toast.error("Please ensure all questions have titles and options (if applicable).");
+              }
             }}
             size={"sm"}
             disabled={questions.length <= 0}

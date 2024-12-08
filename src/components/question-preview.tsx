@@ -40,7 +40,7 @@ const QuestionPreview = ({
 
 
   return (
-    <div className="border rounded-2xl p-4 bg-gray-00 max-w-[592px] w-full hover:bg-gray-50 transition-all duration-300 ease-in-out">
+    <div className={`${type==='singleSelect'? 'border-none hover:bg-gray-00' : 'border hover:bg-gray-50'} rounded-2xl p-4 bg-gray-00 max-w-[592px] w-full  transition-all duration-300 ease-in-out`}>
       <div className="flex items-center justify-between">
         <div>
           {/* Title */}
@@ -70,7 +70,7 @@ const QuestionPreview = ({
           />
         )}
         {type === "singleSelect" && (
-          <div className="space-y-2">
+          <div className="space-y-4">
             {options.map((option, index) => (
               <div key={index} className="flex items-center gap-2">
                 {/* Radio Input */}
@@ -85,7 +85,7 @@ const QuestionPreview = ({
                 />
                 <div className="w-3 h-3 rounded-full border p-1 border-gray-400 flex items-center justify-center peer-checked:border-green-300 peer-checked:bg-green-300"></div>
 
-                <label htmlFor={`option-${index}`} className="text-gray-800 cursor-pointer">
+                <label htmlFor={`option-${index}`} className="text-gray-800 text-sm cursor-pointer">
                   {option || `Option ${index + 1}`}
                 </label>
               </div>
