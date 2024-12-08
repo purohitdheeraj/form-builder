@@ -4,8 +4,10 @@ import Icon from "@/components/icon";
 import Question from "@/components/question";
 import QuestionPreview from "@/components/question-preview";
 import { Button } from "@/components/ui/button";
+import { Title } from "@/components/ui/title";
 import { ArrowUpRight } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import toast, { Toaster } from 'react-hot-toast';
 
 // Define the type for input types
 type InputType = {
@@ -35,6 +37,7 @@ const CreateJob = () => {
   const [answers, setAnswers] = useState<any>({});
   const [jobTitle, setJobTitle] = useState<string>("");
   const [showPreview, setShowPreview] = useState<boolean>(false);
+  const [isFormSaved, setIsFormSaved] = useState<boolean>(false);
   const jobTitleRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -121,12 +124,37 @@ const CreateJob = () => {
               />
             ))}
           </div>
-          <Button className="w-max ml-auto" size={"sm"}>
+          <Button onClick={()=>{
+            setIsFormSaved(true)
+            setShowPreview(false)
+            toast.success("Applied Successfully. All the best!")
+          }} className="w-max ml-auto" size={"sm"}>
             Submit
           </Button>
         </main>
       </div>
     );
+  }else if(isFormSaved){
+    return(<>
+    <div className="flex flex-col justify-between border-x ">
+    <header className="py-3 px-6 flex items-center justify-between border-b sticky top-0 z-10 backdrop-blur-sm">
+        <Title>Application Submitted</Title>
+    </header>
+    <main className="space-y-4 flex flex-col p-6 min-h-screen text-center items-center">
+
+    <svg width="80" height="80" viewBox="0 0 81 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="40.5" cy="40" r="32" className="animate-pulse" fill="#E2F6EA"></circle><path d="M30.9299 28.9494C36.4231 24.1921 44.5769 24.1921 50.0701 28.9494C52.5499 31.0969 54.2352 34.0161 54.8552 37.2373C56.2285 44.3733 52.1516 51.4346 45.2851 53.8133C42.1854 54.887 38.8146 54.887 35.7149 53.8133C28.8484 51.4346 24.7715 44.3733 26.1448 37.2373C26.7648 34.0161 28.4502 31.0969 30.9299 28.9494Z" fill="#00AA45" stroke="#1E874B"></path><path d="M32.168 40.8334L37.168 45.8334L48.8346 34.1667" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path>
+</svg>
+
+<p className="text-sm">
+You have successfully applied for the {jobTitle} position. All the best!
+</p>
+
+      <Button href="/post-job" className="bg-gray-1k text-gray-00 hover:bg-gray-1k/90 border-gray-700" size={'sm'}>Explore more</Button>
+
+      </main>  
+    </div>
+    </>)
   } else {
     return (
       <div className="flex flex-col justify-between border-x ">

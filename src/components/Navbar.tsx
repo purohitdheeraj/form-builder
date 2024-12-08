@@ -8,7 +8,7 @@ const Navbar = () => {
         Job Listing
       </Title>
       
-      <Button size={"sm"} className="shadow-xl" href="/create-job" >Post a Job</Button>
+      <Button size={"sm"} className="shadow-xl" href="/post-job" >Post a Job</Button>
     </div>
   )
 }

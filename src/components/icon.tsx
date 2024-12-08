@@ -11,7 +11,7 @@ type Icons = {
   [key: string]: JSX.Element;
 }
 
-export type IconName = "number" | "date" | "draft" | "gripVertical" | "longAnswer" | "shortAnswer" | "singleSelect" | "url" ;
+export type IconName = "number" | "date" | "draft" | "gripVertical" | "longAnswer" | "shortAnswer" | "singleSelect" | "url"| 'check' ;
 
 const Icon = ({ name, color = "currentColor",fill=true, width = 24, height = 24 }: IconProps & { name: IconName }) => {
   const icons: Icons = {
@@ -113,6 +113,16 @@ const Icon = ({ name, color = "currentColor",fill=true, width = 24, height = 24 
         <path d="M14.0386 12.1746L16.2132 10C17.9289 8.28427 17.9289 5.50252 16.2132 3.78679C14.4975 2.07107 11.7157 2.07107 10 3.78679L7.82537 5.96142M12.1746 14.0386L10 16.2132C8.28427 17.929 5.50253 17.929 3.7868 16.2132C2.07107 14.4975 2.07107 11.7157 3.7868 10L5.96142 7.82538" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
       </>
     ),
+    check: (
+      <>
+
+<svg width="80" height="80" viewBox="0 0 81 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="40.5" cy="40" r="32" fill="#E2F5EA"></circle><path d="M30.9299 28.9494C36.4231 24.1921 44.5769 24.1921 50.0701 28.9494C52.5499 31.0969 54.2352 34.0161 54.8552 37.2373C56.2285 44.3733 52.1516 51.4346 45.2851 53.8133C42.1854 54.887 38.8146 54.887 35.7149 53.8133C28.8484 51.4346 24.7715 44.3733 26.1448 37.2373C26.7648 34.0161 28.4502 31.0969 30.9299 28.9494Z" fill="#00AA45" stroke="#1E874B"></path><path d="M32.168 40.8334L37.168 45.8334L48.8346 34.1667" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path>
+</svg>
+
+
+      </>
+    )
   };
   
   return (
