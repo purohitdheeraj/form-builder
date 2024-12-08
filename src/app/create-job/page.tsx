@@ -1,7 +1,6 @@
 "use client";
 import { Button } from '@/components/ui/button';
 
-import Dropdown from '@/components/custom-dropdown';
 
 import Question from '@/components/question';
 
@@ -25,6 +24,9 @@ const CreateJob = () => {
         <br />
 
         <Question/>
+        
+        
+      
       </div>
     </>
   );
