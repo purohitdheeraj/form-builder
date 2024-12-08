@@ -9,7 +9,6 @@ import {
 import Icon from "./icon";
 import { ChevronDown, Plus } from "lucide-react";
 import { useEffect, useState } from "react";
-import { Button } from "./ui/button";
 
 type InputType = {
   name: string;

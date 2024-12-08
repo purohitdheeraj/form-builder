@@ -10,7 +10,6 @@ const inputTypes = [
   { label: "Long Answer", name: "longAnswer", fill: false },
   { label: "Single Select", name: "singleSelect", fill: false },
   { label: "URL", name: "url", fill: false },
-  { label: "Date", name: "date", fill: false },
   { label: "Number", name: "number", fill: false },
 ];
 
@@ -24,7 +23,7 @@ const Question = ({
   const [localType, setLocalType] = useState(questionType);
   const [localTitle, setLocalTitle] = useState(title);
   const [localSubtitle, setLocalSubtitle] = useState(subtitle);
-  const [options, setOptions] = useState([""]); // Options for single-select
+  const [options, setOptions] = useState(["",""]); // Options for single-select
 
   // Notify parent whenever local state changes
   useEffect(() => {
@@ -50,8 +49,8 @@ const Question = ({
 
   return (
     <div className="border rounded-2xl p-4 bg-gray-00 max-w-[592px] w-full hover:bg-gray-50 transition-all duration-300 ease-in-out">
-      <div className="flex items-center justify-between">
-        <div>
+      <div className="flex items-center space-x-2 justify-between">
+        <div className="flex-grow">
           {/* Title Input */}
           <input
             type="text"
@@ -60,7 +59,7 @@ const Question = ({
             onChange={(e) => setLocalTitle(e.target.value)}
             className={`font-semibold ${
               localTitle ? "text-gray-1k" : "text-gray-400"
-            } bg-transparent border-none outline-none w-full`}
+            } bg-transparent border-none outline-none w-full text-sm flex-grow `}
           />
           {/* Subtitle Input */}
           <input
@@ -132,9 +131,7 @@ const Question = ({
           </div>
         )}
         {localType === "url" && <Input disabled type="url" placeholder="" />}
-        {localType === "date" && (
-          <Input disabled type="text" placeholder="MM-DD-YYYY" />
-        )}
+        
         {localType === "number" && (
           <Input disabled type="number" placeholder="" />
         )}
