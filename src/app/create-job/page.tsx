@@ -74,7 +74,10 @@ const CreateJob = () => {
             } bg-transparent border-none outline-none w-full`}
           />
       
-      <Button size={"sm"} disabled variant={'outline'} className="shadow-xl" href="/create-job" >Preview
+      <Button size={"sm"}  variant={'outline'} className="shadow-xl font-semibold"  disabled={questions.length <=0 } >
+      <span>
+          Preview
+      </span>
       <ArrowUpRight size={16} />
       </Button>
     </header>

@@ -33,7 +33,7 @@ const Dropdown = ({ inputTypes, setQuestionType, triggerType = 'icon' }: Dropdow
   };
 
   return (
-    <DropdownMenu>
+    <DropdownMenu modal={false}>
       <DropdownMenuTrigger className="flex items-center gap-1 text-gray-400 outline-none">
         {triggerType === 'icon' ? (<>
           <Icon
@@ -44,10 +44,11 @@ const Dropdown = ({ inputTypes, setQuestionType, triggerType = 'icon' }: Dropdow
         />
         <ChevronDown className="w-5 h-5" strokeWidth={1.5} />
         </>):(<>
-          <Button variant={'outline'} className="text-gray-1k font-semibold ">
+        
+            <div className="text-gray-1k font-semibold  border border-gray-200 bg-background hover:bg-accent hover:text-accent-foreground inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-5 [&_svg]:shrink-0 shadow-sm h-9 rounded-md px-[14px] py-2">
             <Plus size={16} />
             Add Question
-          </Button>
+            </div>
         </>)}
         
       </DropdownMenuTrigger>
