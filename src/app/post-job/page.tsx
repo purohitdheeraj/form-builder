@@ -136,7 +136,7 @@ const validateAnswers = () => {
 
   if (showPreview) {
     return (
-      <div className="flex flex-col justify-between border-x pb-10">
+      <div className="flex flex-col justify-between sm:border-x pb-10">
         <header className="py-3 px-6 flex items-center justify-between border-b sticky top-0 z-10 backdrop-blur-sm">
           <Title>{jobTitle || "Preview"}</Title>
           <div className="flex flex-col text-gray-1k text-right gap-2 text-sm">
@@ -201,7 +201,7 @@ You have successfully applied for the {jobTitle} position. All the best!
     </>)
   } else {
     return (
-      <div className="flex flex-col justify-between border-x ">
+      <div className="flex flex-col justify-between  sm:border-x max-sm:h-full">
         <header className="py-3 px-6 flex items-center space-x-2 justify-between border-b sticky top-0 z-10 backdrop-blur-sm ">
           <input
             type="text"
@@ -217,6 +217,7 @@ You have successfully applied for the {jobTitle} position. All the best!
           <Button
             size={"sm"}
             onClick={() => {
+              
               if (validateQuestions()) {
                 setShowPreview(true);
               } else {
@@ -232,7 +233,7 @@ You have successfully applied for the {jobTitle} position. All the best!
           </Button>
         </header>
 
-        <main className="space-y-4 flex flex-col min-h-screen ">
+        <main className="space-y-4 flex flex-col px-2 sm:p-0  sm:min-h-screen ">
           <div className="space-y-4 my-6 flex justify-center flex-col items-center">
             {questions.map((question) => (
               <Question
@@ -257,7 +258,7 @@ You have successfully applied for the {jobTitle} position. All the best!
           </div>
         </main>
 
-        <footer className="py-3 border-gray-200 px-6 bg-secondary/90 backdrop-blur-sm flex items-center justify-between border-t ">
+        <footer className="py-3 border-gray-200 mt-auto px-6 bg-secondary/90 backdrop-blur-sm flex items-center justify-between border-t space-x-2 ">
           <Button
             disabled={questions.length <= 0}
             size={"sm"}

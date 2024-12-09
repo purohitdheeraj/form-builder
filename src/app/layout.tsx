@@ -29,7 +29,7 @@ export default function RootLayout({
         <Toaster 
           position="bottom-right"
           toastOptions={{
-            className:'w-max mx-auto min-w-[320px] max-w-[320px] mob:max-w-[400px] flex items-center justify-between py-2 pl-2 px-4 rounded-xl font-normal bg-gray-1k dark:bg-gray-1k text-gray-00 overflow-hidden logo-drop-shadow h-full mr-10'
+            className:'w-max mx-auto min-w-[320px] max-w-[320px] mob:max-w-[400px] flex items-center justify-between py-2 pl-2 px-4 rounded-xl font-normal bg-gray-1k dark:bg-gray-1k text-gray-00 overflow-hidden logo-drop-shadow h-full sm:mr-10'
           }} 
         />
       </body>
