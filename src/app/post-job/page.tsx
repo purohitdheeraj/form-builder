@@ -185,7 +185,7 @@ const validateAnswers = () => {
     <div className="flex flex-col justify-between sm:border-x ">
     {/* Confetti animation */}
     <>
-			<Confetti />
+			<Confetti  className="mx-auto w-full sm:max-w-screen-xl" />
 		</>
     <header className="py-3 px-6 flex items-center justify-between border-b sticky top-0 z-10 backdrop-blur-sm">
         <Title>Application Submitted</Title>
