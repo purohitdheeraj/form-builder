@@ -61,3 +61,24 @@ To run Form Builder locally, follow these steps:
 2. Install dependencies: `npm install`
 3. Start the development server: `npm run dev`
 4. Open your browser and visit localhost: `http://localhost:3000`
+
+## Screenshots
+
+### Home Page
+![image](https://github.com/user-attachments/assets/8b815782-1243-4639-aa07-d40acf895d12)
+
+### Post Job 
+![image](https://github.com/user-attachments/assets/d4658e6b-d0fc-432b-b296-520371ceab37)
+
+### Multiple Question Types
+![image](https://github.com/user-attachments/assets/17e83885-6bf0-41ed-a4fc-2f4e58e65e2d)
+
+### Dynamic Progress Indicator
+![image](https://github.com/user-attachments/assets/bb87acd4-23c0-4cb5-8371-0ad3b1db646c)
+
+### Success Message
+![image](https://github.com/user-attachments/assets/c5d57b49-5153-4ab0-8586-6f94e308ac81)
+
+
+
+
