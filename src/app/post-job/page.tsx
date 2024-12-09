@@ -8,6 +8,7 @@ import { Title } from "@/components/ui/title";
 import { ArrowUpRight } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import toast from 'react-hot-toast';
+import { Fade, Slide } from "react-awesome-reveal";
 
 // Define the type for input types
 type InputType = {
@@ -234,7 +235,7 @@ You have successfully applied for the {jobTitle} position. All the best!
         </header>
 
         <main className="space-y-4 flex flex-col px-2 sm:p-0  sm:min-h-screen ">
-          <div className="space-y-4 my-6 flex justify-center flex-col items-center">
+          <div className="space-y-4 my-6 flex justify-center  flex-col items-center">
             {questions.map((question) => (
               <Question
                 key={question.id}

@@ -4,6 +4,7 @@ import Dropdown from "./custom-dropdown";
 import { Plus } from "lucide-react";
 import { Button } from "./ui/button";
 import { Textarea } from "./ui/textarea";
+import { Fade } from "react-awesome-reveal";
 
 const inputTypes = [
   { label: "Short Answer", name: "shortAnswer", fill: false },
@@ -48,6 +49,7 @@ const Question = ({
   };
 
   return (
+    <Fade key={questionId} className="w-full max-w-[592px]" cascade damping={0.1} triggerOnce>
     <div className="border rounded-2xl space-y-1 p-4 bg-gray-00 max-w-[592px] w-full hover:bg-gray-50 transition-all duration-300 ease-in-out">
       <div className="flex items-center space-x-2 justify-between">
         <div className="flex-grow space-y-1">
@@ -137,6 +139,7 @@ const Question = ({
         )}
       </div>
     </div>
+    </Fade>
   );
 };
 
