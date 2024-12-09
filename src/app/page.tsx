@@ -48,7 +48,7 @@ export default function Home() {
             With just a few clicks, post your job listing and connect with top talent. 
             Start building the future of your team today!
           </p>
-          <Button size="sm" className="mt-4" href="/post-job">
+          <Button size="sm" className="mt-4 bg-gray-1k text-gray-00 hover:bg-gray-1k/90 border-gray-700" href="/post-job">
             Start Creating
           </Button>
         </section>
