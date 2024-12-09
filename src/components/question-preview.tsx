@@ -40,11 +40,11 @@ const QuestionPreview = ({
 
 
   return (
-    <div className={`${type==='singleSelect'? 'border-none hover:bg-gray-00' : 'border hover:bg-gray-50'} rounded-2xl p-4 bg-gray-00 max-w-[592px] w-full  transition-all duration-300 ease-in-out`}>
+    <div className={`${type==='singleSelect'? 'border-none hover:bg-gray-00' : ''} rounded-2xl  bg-gray-00 max-w-[592px] w-full  transition-all duration-300 ease-in-out space-y-2`}>
       <div className="flex items-center justify-between">
-        <div>
+        <div className="space-y-1">
           {/* Title */}
-          <Title className="text-sm">{title || "Untitled Question"}</Title>
+          <Title className="text-sm font">{title || "Untitled Question"}</Title>
 
           {/* Subtitle */}
           {subtitle && <Title className="font-normal text-xs text-gray-600">{subtitle}</Title>}
@@ -52,7 +52,7 @@ const QuestionPreview = ({
       </div>
 
       {/* Render input based on type */}
-      <div className="mt-4">
+      <div>
         {type === "shortAnswer" && (
           <Input
             value={inputValue}
@@ -70,7 +70,7 @@ const QuestionPreview = ({
           />
         )}
         {type === "singleSelect" && (
-          <div className="space-y-4">
+          <div className="space-y-2">
             {options.map((option, index) => (
               <div key={index} className="flex items-center gap-2">
                 {/* Radio Input */}

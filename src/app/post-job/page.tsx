@@ -47,6 +47,12 @@ const CreateJob = () => {
     }
   }, []);
 
+  useEffect(()=>{
+    if (showPreview || isFormSaved) {
+      document.body.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  },[showPreview, isFormSaved]);
+
   
 
   type AnswerData = {
@@ -130,7 +136,7 @@ const validateAnswers = () => {
 
   if (showPreview) {
     return (
-      <div className="flex flex-col justify-between border-x ">
+      <div className="flex flex-col justify-between border-x pb-10">
         <header className="py-3 px-6 flex items-center justify-between border-b sticky top-0 z-10 backdrop-blur-sm">
           <Title>{jobTitle || "Preview"}</Title>
           <div className="flex flex-col text-gray-1k text-right gap-2 text-sm">
@@ -145,7 +151,7 @@ const validateAnswers = () => {
           </div>
         </header>
         <main className="space-y-4 flex flex-col  min-h-screen">
-          <div className="space-y-4 my-6 flex justify-center flex-col items-center">
+          <div className="space-y-8 my-6 px-6 flex justify-center flex-col items-center">
             {/* Render the questions in a preview mode */}
             {questions.map((question) => (
               <QuestionPreview
@@ -155,7 +161,7 @@ const validateAnswers = () => {
               />
             ))}
           </div>
-          <div className="flex justify-end px-4">
+          <div className="flex justify-end px-6 my-6">
 
           <Button onClick={()=>{
             if (validateAnswers()) {

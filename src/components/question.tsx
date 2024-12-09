@@ -48,9 +48,9 @@ const Question = ({
   };
 
   return (
-    <div className="border rounded-2xl p-4 bg-gray-00 max-w-[592px] w-full hover:bg-gray-50 transition-all duration-300 ease-in-out">
+    <div className="border rounded-2xl space-y-1 p-4 bg-gray-00 max-w-[592px] w-full hover:bg-gray-50 transition-all duration-300 ease-in-out">
       <div className="flex items-center space-x-2 justify-between">
-        <div className="flex-grow">
+        <div className="flex-grow space-y-1">
           {/* Title Input */}
           <input
             type="text"
@@ -72,7 +72,7 @@ const Question = ({
             } bg-transparent border-none outline-none w-full`}
           />
         </div>
-        <div className="flex items-center gap-2 text-gray-1k">
+        <div className="flex items-center text-gray-1k">
           {/* Dropdown for question type */}
           <Dropdown
             currentType={inputTypes.find((item) => item.name === localType)}
@@ -84,7 +84,7 @@ const Question = ({
       </div>
 
       {/* Render input based on question type */}
-      <div className="mt-2">
+      <div>
         {localType === "shortAnswer" && <Input disabled placeholder="" />}
         {localType === "longAnswer" && (
           <Textarea
