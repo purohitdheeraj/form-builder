@@ -18,7 +18,7 @@ export default function Home() {
       <main className="h-full border-x px-6 py-8 space-y-6">
         <section className="space-y-4">
           <p className="text-gray-1k text-sm leading-relaxed">
-            Welcome to our streamlined <span className="font-semibold">Job Listing Form Builder</span>, 
+            Welcome to our streamlined <span className="font-semibold">Form Builder</span>, 
             designed to make creating, managing, and sharing job applications easier than ever. Whether 
             you're a recruiter or a business owner, our intuitive tool empowers you to:
           </p>

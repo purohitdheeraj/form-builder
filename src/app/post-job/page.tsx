@@ -8,7 +8,8 @@ import { Title } from "@/components/ui/title";
 import { ArrowUpRight } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import toast from 'react-hot-toast';
-import { Fade, Slide } from "react-awesome-reveal";
+import Confetti from "react-confetti";
+
 
 // Define the type for input types
 type InputType = {
@@ -181,7 +182,11 @@ const validateAnswers = () => {
     );
   }else if(isFormSaved){
     return(<>
-    <div className="flex flex-col justify-between border-x ">
+    <div className="flex flex-col justify-between sm:border-x ">
+    {/* Confetti animation */}
+    <>
+			<Confetti />
+		</>
     <header className="py-3 px-6 flex items-center justify-between border-b sticky top-0 z-10 backdrop-blur-sm">
         <Title>Application Submitted</Title>
     </header>
