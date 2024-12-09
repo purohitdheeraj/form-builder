@@ -110,7 +110,7 @@ const Question = ({
                       handleOptionChange(index, e.target.value)
                     }
                     placeholder={`Option ${index + 1}`}
-                    className="text-gray-1k placeholder:text-gray-400"
+                    className="text-gray-1k text-sm placeholder:text-gray-400"
                   />
                   {index === options.length - 1 && (
                     <Button
