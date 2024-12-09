@@ -55,7 +55,7 @@ const Dropdown = ({ inputTypes,setQuestionType, triggerType = 'icon', currentTyp
       </DropdownMenuTrigger>
       <DropdownMenuContent
         align="start"
-        className="min-w-[300px] border-gray-200 shadow-xl rounded-[16px]"
+        className="min-w-[240px] sm:min-w-[300px] border-gray-200 shadow-xl rounded-[16px]"
       >
         <DropdownMenuLabel className="bg-gray-50 py-[10px] px-4 text-sm font-semibold text-gray-500 rounded-sm">
           Input Types
